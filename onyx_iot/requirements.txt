@@ -1,0 +1,13 @@
+scapy
+python-nmap
+aiohttp
+beautifulsoup4
+cryptography
+dnspython
+zeroconf
+pysnmp
+paramiko
+lxml
+jinja2
+rich
+dataclasses-json

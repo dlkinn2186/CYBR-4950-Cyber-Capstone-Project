@@ -1,0 +1,21 @@
+
+{
+  "boa/": ["CVE-2017-9833"],
+  "goahead": ["CVE-2019-5096"],
+  "mini_httpd": ["CVE-2012-3456"],
+  "lighttpd": ["CVE-2018-1000517"],
+  "uhttpd": ["CVE-2020-11724"],
+  "libupnp": ["CVE-2020-12695"],
+  "arlo": ["CVE-2022-31793"],
+  "netgear": ["CVE-2021-45608","CVE-2019-20703"],
+  "tp-link": ["CVE-2020-24297"],
+  "nintendo": ["CVE-2021-3137"],
+  "nintendo_networkbuffer": ["CVE-2022-47949"],
+  "nintendo_hid_suspend": ["CVE-2025-38507"],
+  "nintendo_hid_rumble": ["CVE-2022-49974"],
+  "xbox_gaming_services": ["CVE-2025-55245","CVE-2025-59281"],
+  "xbox_istorage": ["CVE-2025-53768"],
+  "xbox_remote_exec": ["CVE-2024-38032"],
+  "xbox_info_leak": ["CVE-2025-55242"],
+  "kindle_firmware": ["CVE-2021-30354","CVE-2021-30355"]
+}
