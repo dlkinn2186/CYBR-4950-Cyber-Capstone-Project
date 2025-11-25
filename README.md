@@ -3,7 +3,11 @@
 
 ## Overview:
 OnyxIoT is a Python-based IoT network scanning tool designed to identify devices, enumerate services, fingerprint embedded software, detect weak or default configurations, and flag potential vulnerabilities using a lightweight CVE-matching engine.
-The tool supports both interactive mode (--interactive) and direct command-line scanning using --cidr, --out, and other flags.
+
+The tool supports both:
+  - Interactive mode (`--interactive`)
+  - Direct command-line scanning using `--cidr`, `--out`, and other flags.
+
 OnyxIoT is built as a safe, read-only scanner. It performs reconnaissance but does not exploit vulnerabilities.
 
 ## Key Features:
@@ -51,7 +55,8 @@ OnyxIoT is built as a safe, read-only scanner. It performs reconnaissance but do
     - Weak/default credential warnings
     - High/Medium/Low severity tagging
 
-## Installation Requirements:
+## Installation
+### Requirements
   - Python 3.13+
   - Npcap (Windows)
   - root privileges (Linux/macOS)
@@ -64,6 +69,7 @@ OnyxIoT is built as a safe, read-only scanner. It performs reconnaissance but do
 
 ## Usage:
 ### Interactive Mode
+
 
 
 
