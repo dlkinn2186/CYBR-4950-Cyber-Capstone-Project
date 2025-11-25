@@ -10,8 +10,8 @@ The tool supports both:
 
 OnyxIoT is built as a safe, read-only scanner. It performs reconnaissance but does not exploit vulnerabilities.
 
-## Key Features:
-### Interactive or CLI Operation
+## Key Features
+### Interactive or Traditional CLI Operation
 - `--interactive` provides a menu-driven interface
 - Command-line flags allow automated scanning & reporting
 
@@ -67,8 +67,26 @@ OnyxIoT is built as a safe, read-only scanner. It performs reconnaissance but do
   - Pip packages:
     - `pip install -r requirements.txt`
 
-## Usage:
+## Usage
 ### Interactive Mode
+Launch Interactive Menu:
+
+`python onyx_iot.py --interactive`
+
+Menu options allow you to:
+
+  - Scan your network and return connected devices
+  - Run a full vulnerability scan and auto-generate HTML reports
+  - Exit the program
+
+### Direct Command-Line Mode
+Basic Scan:
+
+`python onyx_iot.py --cidr 192.168.1.0/24`
+
+Save HTML Report:
+
+`pyhon onyx_iot.py --cidr 192.168.1.0/24 --out reports/html_report.html`
 
 
 
