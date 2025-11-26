@@ -156,7 +156,7 @@ onyx_iot/
 
     - Software patterns mapping to known CVEs
 
-6. Report generator outputs a clean security report in HTML (and optional JSON)
+6. Report generator outputs a clean security report in HTML
 
 ## Limitations
 
