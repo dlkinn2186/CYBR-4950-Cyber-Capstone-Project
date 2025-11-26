@@ -56,16 +56,32 @@ OnyxIoT is built as a safe, read-only scanner. It performs reconnaissance but do
     - High/Medium/Low severity tagging
 
 ## Installation
-### Requirements
-  - Python 3.13+
-  - Npcap (Windows)
-  - root privileges (Linux/macOS)
-  - OnyxIoT file
-    - Ensure these folders are present:
-        - `scanner/cve_db.json`
-        - `scanner/oui_map.json`
-  - Pip packages:
-    - `pip install -r requirements.txt`
+
+### 1. Create and activate a Python Virtual Environment
+
+Using a virtual environment keeps dependencies isolated and prevents conflicts with system Python packages.
+
+Windows:
+```
+python -m venv .venv
+.\.venv\Scripts\activate
+```
+
+Linux/macOS:
+```
+python3 -m venv .venv
+source .venv /bin/activate
+```
+
+### 2. Install Required Packages
+`pip install -r requirements.txt`
+
+### 3. Permissions
+  - Windows requires Npcap for ARP scanning
+      - https://npcap.com/#download
+  - Linux/Mac require running with `sudo`:
+      - `sudo python onyx_iot.py --interactive`
+      - `sudo python onyx_iot.py --cidr 192.168.1.0/24 --out output.html`
 
 ## Usage
 ### Interactive Mode
@@ -88,7 +104,71 @@ Save HTML Report:
 
 `pyhon onyx_iot.py --cidr 192.168.1.0/24 --out reports/html_report.html`
 
+## Repository Structure
 
+```
+onyx_iot/
+├── onyx_iot.py                → main program (CLI + interactive)
+├── scanner/
+│   ├── discovery.py           → ARP/DNS/OUI device discovery
+│   ├── ports.py               → async TCP port scanner
+│   ├── fingerprint.py         → HTTP, TLS, SNMP, RTSP, SSDP fingerprinting
+│   ├── cve_lookup.py          → lightweight CVE pattern matcher
+│   ├── reporting/
+│   │     └── html.py          → HTML report generator
+│   ├── checks/
+│   │     ├── common_checks.py
+│   │     ├── http_checks.py
+│   │     ├── tls_checks.py
+│   │     ├── dns_checks.py
+│   │     ├── rtsp_checks.py
+│   │     ├── auth_checks.py
+│   │     └── rules.py
+│   ├── cve_db.json            → list of fingerprint → CVEs
+│   └── oui_map.json           → vendor MAC address prefixes
+└── requirements.txt
+```
+## How It Works
+
+1. User starts scan (interactive or CIDR flag)
+
+2. Discovery phase identifies hosts, vendors, hostnames
+
+3. Port scanner enumerates open TCP ports
+
+4. Fingerprint engine collects:
+
+    - HTTP/HTTPS banners
+
+    - TLS certificate info
+
+    - UPnP/SSDP metadata
+
+    - SNMP, RTSP details
+
+5. Check modules look for:
+
+    - Misconfigurations
+
+    - Weak/default credentials
+
+    - Insecure protocols
+
+    - Software patterns mapping to known CVEs
+
+6. Report generator outputs a clean security report in HTML (and optional JSON)
+
+## Limitations
+
+  - No active exploitations
+  - CVE detection relies on banner signatures, not full CVE scraping
+  - Some devices may block scanning based on firewall settings
+
+## License
+
+This project is for academic and educational use only.
+
+Unauthorized scanning of others' networks or failing to obtain permission to test on certain networks may violate strict policies or local laws.
 
 
 
