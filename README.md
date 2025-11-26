@@ -57,7 +57,7 @@ OnyxIoT is built as a safe, read-only scanner. It performs reconnaissance but do
 
 ## Installation
 
-### 1. Create and activate a Python Virtual Environment
+### 1. Create and Activate a Python Virtual Environment
 
 Using a virtual environment keeps dependencies isolated and prevents conflicts with system Python packages.
 
@@ -104,7 +104,7 @@ Save HTML Report:
 
 `pyhon onyx_iot.py --cidr 192.168.1.0/24 --out reports/html_report.html`
 
-## Repository Structure
+## Program Structure
 
 ```
 onyx_iot/
