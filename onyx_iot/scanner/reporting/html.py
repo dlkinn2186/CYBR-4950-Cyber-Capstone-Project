@@ -1,3 +1,4 @@
+
 # scanner/reporting/html.py
 from jinja2 import Template
 from datetime import datetime
@@ -93,12 +94,31 @@ footer {
 
   <h3>Services</h3>
   <table>
-    <tr><th>Port</th><th>Name</th><th>Banner</th></tr>
+    <tr>
+      <th>Port</th>
+      <th>Name</th>
+      <th>Banner</th>
+      <th>TLS Info</th>
+    </tr>
+
     {% for s in h.services %}
       <tr>
-        <td>{{s.port}}</td>
-        <td>{{s.name or "?"}}</td>
-        <td><pre>{{(s.banner or "")[:120]}}</pre></td>
+        <td>{{ s.port }}</td>
+        <td>{{ s.name or "?" }}</td>
+        <td><pre>{{ (s.banner or "")[:120] }}</pre></td>
+        <td>
+          {% if s.tls %}
+            <strong>Protocol:</strong> {{ s.tls.protocol }}<br>
+            {% if s.tls.notAfter %}
+              <strong>Expires:</strong> {{ s.tls.notAfter }}<br>
+            {% endif %}
+            {% if s.tls.subject.CN %}
+              <strong>CN:</strong> {{ s.tls.subject.CN }}
+            {% endif %}
+          {% else %}
+            —
+          {% endif %}
+        </td>
       </tr>
     {% endfor %}
   </table>
@@ -131,7 +151,6 @@ def write_html_report(hosts, out_path, cidr=None):
     severity_counts = {"High": 0, "Medium": 0, "Low": 0}
     total_findings = 0
 
-    # Count findings and severities
     for h in hosts:
         for f in h.get("findings", []):
             total_findings += 1
@@ -150,5 +169,6 @@ def write_html_report(hosts, out_path, cidr=None):
 
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
+
 
 
