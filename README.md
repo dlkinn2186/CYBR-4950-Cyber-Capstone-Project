@@ -70,7 +70,7 @@ python -m venv .venv
 Linux/macOS:
 ```
 python3 -m venv .venv
-source .venv /bin/activate
+source .venv /bin/activate.ps1
 ```
 
 ### 2. Install Required Packages
