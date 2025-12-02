@@ -64,13 +64,13 @@ Using a virtual environment keeps dependencies isolated and prevents conflicts w
 Windows:
 ```
 python -m venv .venv
-.\.venv\Scripts\activate
+.\.venv\Scripts\Activate.ps1
 ```
 
 Linux/macOS:
 ```
 python3 -m venv .venv
-source .venv /bin/activate.ps1
+source .venv /bin/activate
 ```
 
 ### 2. Install Required Packages
